@@ -1,4 +1,4 @@
 ---
 applications:
   - name: pongboard
-    buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
+  - buildpack: https://github.com/cloudfoundry/ruby-buildpack.git
