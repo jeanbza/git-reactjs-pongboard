@@ -1,0 +1,4 @@
+---
+applications:
+  - name: pongboard
+    buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git

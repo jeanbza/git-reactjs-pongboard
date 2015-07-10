@@ -1,0 +1,73 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello React</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
+    </head>
+    <body>
+        <div id="content"></div>
+        <script type="text/jsx">
+            var Repository = React.createClass({
+                render: function() {
+                    return (
+                        <div className="repository">
+                            <h2 className="repositoryName">
+                                {this.props.name}
+                            </h2>
+                        </div>
+                    );
+                }
+            });
+
+            var RepositoryList = React.createClass({
+               render: function() {
+                   var repositories = this.props.repositories.map(function (repository) {
+                       return (
+                           <Repository name={repository.name} />
+                       );
+                   });
+
+                   return (
+                       <div className="repositoryList">
+                           <h1>Repositories</h1>
+                           {repositories}
+                       </div>
+                   );
+               }
+            });
+
+            var RepositoryArea = React.createClass({
+                getInitialState: function() {
+                    return {repositories: []};
+                },
+                componentDidMount: function() {
+                    $.ajax({
+                        url: this.props.url,
+                        dataType: 'json',
+                        cache: false,
+                        success: function(data) {
+                            this.setState({repositories: data});
+                        }.bind(this),
+                        error: function(xhr, status, err) {
+                            console.error(this.props.url, status, err.toString());
+                        }.bind(this)
+                    });
+                },
+                render: function() {
+                    return (
+                        <RepositoryList repositories={this.state.repositories} />
+                    );
+                }
+            });
+
+            React.render(
+                <RepositoryArea url="https://api.github.com/users/jadekler/repos" />,
+                document.getElementById('content')
+            );
+        </script>
+    </body>
+</html>
