@@ -9,5 +9,6 @@ Bundler.require(*Rails.groups)
 
 module Pong
   class Application < Rails::Application
+    config.consider_all_requests_local = false
   end
 end

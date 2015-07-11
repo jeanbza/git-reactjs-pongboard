@@ -1,5 +1,10 @@
 class PongController < ActionController::Base
   def index
-    puts 'hello world'
+  end
+
+  def data
+    data = HTTParty.get('http://racquet.io/pivotal-denver/matches.json?limit=200')
+
+    render json: data.body
   end
 end

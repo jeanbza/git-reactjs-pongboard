@@ -8,41 +8,40 @@ var Match = React.createClass({
 
 var PongBoard = React.createClass({
     getInitialState: function() {
-        return {match_data: []};
+        return {matches: []};
     },
     componentDidMount: function() {
         $.ajax({
             url: this.props.url,
-            dataType: 'jsonp',
+            dataType: 'json',
             cache: false,
             success: function(data) {
-                console.log(data);
-
                 var matches = data['results'].map(function (match) {
                     return (
                         <Match winner={match.winner} loser={match.loser} />
                     );
                 });
 
-                this.setState({match_data: matches});
+                this.setState({matches: matches});
             }.bind(this),
             error: function(xhr, status, err) {
-                console.log('bad');
-
                 console.error(this.props.url, status, err.toString());
             }.bind(this)
         });
     },
     render: function() {
-        console.log(this.state);
-
         return (
-            <h1>Matches</h1>
+            <div>
+                <h1>Matches</h1>
+                {this.state.matches}
+            </div>
         );
     }
 });
 
+var endpoint = "http://" + window.location.host + "/data"
+
 React.render(
-    <PongBoard url="http://racquet.io/pivotal-denver/matches.json?limit=200" />,
+    <PongBoard url={endpoint} />,
     document.getElementById('content')
 );
