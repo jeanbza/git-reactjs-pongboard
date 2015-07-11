@@ -12,6 +12,7 @@
  *
  */
 
-//= require semantic.min
+//= require dist/semantic.min
+//= require_directory ../../../vendor/assets/semantic/dist/components/min/.
 //= require_self
 //= require_tree .

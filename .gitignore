@@ -1,6 +1,9 @@
 .idea*
 node_modules*
-semantic*
+vendor/assets/semantic/dist/components/src*
+vendor/assets/semantic/src*
+vendor/assets/semantic/tasks*
+vendor/assets/semantic/gulpfile.js
 tmp*
 log*
 db*
