@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   get '/', to: 'pong#feed'
-  get '/leaderboard', to: 'pong#leaderboard'
-  get '/about', to: 'pong#about'
+  get '/feed', to: 'pong#feed'
+  get '/feed/data', to: 'pong#feeddata'
 
-  get '/data', to: 'pong#data'
+  get '/leaderboard', to: 'pong#leaderboard'
+  get '/leaderboard/data', to: 'pong#leaderboarddata'
+
+  get '/about', to: 'pong#about'
 end

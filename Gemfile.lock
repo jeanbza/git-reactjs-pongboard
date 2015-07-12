@@ -44,6 +44,7 @@ GEM
     builder (3.2.2)
     coffee-script-source (1.9.1.1)
     connection_pool (2.2.0)
+    elo (0.1.0)
     erubis (2.7.0)
     execjs (2.5.2)
     globalid (0.3.5)
@@ -114,6 +115,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  elo
   httparty
   rails (= 4.2.3)
   react-rails (~> 1.0)
