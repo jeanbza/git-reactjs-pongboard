@@ -1,6 +1,8 @@
 require 'elo'
 
 class PongController < ActionController::Base
+  layout 'application'
+
   def feed
   end
 

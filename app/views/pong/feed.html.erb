@@ -1,25 +1,8 @@
-<!-- index.html -->
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <title>Hello React</title>
-        <%= stylesheet_link_tag "application", media: "all" %>
-    </head>
-    <body>
-        <div class="ui inverted teal three item menu">
-            <a class="active item" href="/">Feed</a>
-            <a class="item" href="/leaderboard">Leaderboard</a>
-            <a class="item" href="/about">About</a>
-        </div>
-
-        <div class="ui grid">
-            <div class="four wide column"></div>
-            <div class="eight wide column">
-                <div id="feed"></div>
-            </div>
-            <div class="four wide column"></div>
-        </div>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    </body>
-</html>
+<div class="ui grid">
+    <div class="four wide column"></div>
+    <div class="eight wide column">
+        <div id="feed"></div>
+    </div>
+    <div class="four wide column"></div>
+</div>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
