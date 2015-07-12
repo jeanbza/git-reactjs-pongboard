@@ -5,4 +5,4 @@
 //= require react_ujs
 //= require dist/semantic.min
 //= require_directory ../../../vendor/assets/semantic/dist/components/min/.
-//= require_tree .
+//= require feed_react

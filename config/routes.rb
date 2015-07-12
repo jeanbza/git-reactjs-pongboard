@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get '/', to: 'pong#feed'
-  get '/feed', to: 'pong#feed'
   get '/feed/data', to: 'pong#feeddata'
 
   get '/leaderboard', to: 'pong#leaderboard'

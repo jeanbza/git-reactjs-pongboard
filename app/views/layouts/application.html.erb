@@ -8,9 +8,9 @@
     </head>
     <body>
         <div class="ui inverted teal three item menu">
-            <a class="active item" href="/">Feed</a>
-            <a class="item" href="/leaderboard">Leaderboard</a>
-            <a class="item" href="/about">About</a>
+            <a class="<%= 'active' if current_page?('/') %> item" href="/">Feed</a>
+            <a class="<%= 'active' if current_page?('/leaderboard') %> item" href="/leaderboard">Leaderboard</a>
+            <a class="<%= 'active' if current_page?('/about') %> item" href="/about">About</a>
         </div>
 
         <%= yield %>
