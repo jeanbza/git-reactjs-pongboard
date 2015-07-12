@@ -7,11 +7,19 @@
         <%= stylesheet_link_tag "application", media: "all" %>
     </head>
     <body>
-        <div class="ui inverted segment">
-            <button class="ui inverted red button active">Red</button>
+        <div class="ui inverted teal three item menu">
+            <a class="active item">Feed</a>
+            <a class="item">Leaderboard</a>
+            <a class="item">About</a>
         </div>
 
-        <div id="content"></div>
+        <div class="ui grid">
+            <div class="four wide column"></div>
+            <div class="eight wide column">
+                <div id="feed"></div>
+            </div>
+            <div class="four wide column"></div>
+        </div>
         <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     </body>
 </html>

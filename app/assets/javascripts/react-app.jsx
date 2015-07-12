@@ -1,7 +1,11 @@
 var Match = React.createClass({
     render: function() {
         return (
-            <div className="match"> {this.props.winner} beat {this.props.loser}</div>
+            <div className="match">
+                <div className="participant ui green label">{this.props.winner}</div>
+                <h2 className="versus">vs</h2>
+                <div className="participant ui red label">{this.props.loser}</div>
+            </div>
         );
     }
 });
@@ -28,11 +32,16 @@ var PongBoard = React.createClass({
                 console.error(this.props.url, status, err.toString());
             }.bind(this)
         });
+        // var matches = [{winner: 'foo', loser: 'bar'},{winner: 'gaz', loser: 'urk'},{winner: 'joe', loser: 'sam'}].map(function(match) {
+        //     return (
+        //         <Match winner={match.winner} loser={match.loser} />
+        //     );
+        // });
+        // this.setState({matches: matches});
     },
     render: function() {
         return (
             <div>
-                <h1>Matches</h1>
                 {this.state.matches}
             </div>
         );
@@ -43,5 +52,5 @@ var endpoint = "http://" + window.location.host + "/data"
 
 React.render(
     <PongBoard url={endpoint} />,
-    document.getElementById('content')
+    document.getElementById('feed')
 );
