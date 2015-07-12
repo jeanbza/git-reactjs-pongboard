@@ -12,7 +12,7 @@ var Match = React.createClass({
 
 var PongBoard = React.createClass({
     getInitialState: function() {
-        return {matches: []};
+        return {};
     },
     componentDidMount: function() {
         $.ajax({
@@ -32,17 +32,11 @@ var PongBoard = React.createClass({
                 console.error(this.props.url, status, err.toString());
             }.bind(this)
         });
-        // var matches = [{winner: 'foo', loser: 'bar'},{winner: 'gaz', loser: 'urk'},{winner: 'joe', loser: 'sam'}].map(function(match) {
-        //     return (
-        //         <Match winner={match.winner} loser={match.loser} />
-        //     );
-        // });
-        // this.setState({matches: matches});
     },
     render: function() {
         return (
             <div>
-                {this.state.matches}
+                {this.state.matches ? this.state.matches : <h1 className='loading'>Loading pong data...</h1>}
             </div>
         );
     }

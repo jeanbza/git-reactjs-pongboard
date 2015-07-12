@@ -34,3 +34,8 @@
 .match a {
     opacity: 1 !important;
 }
+
+.loading {
+    margin-top: 20%;
+    opacity: .5;
+}
