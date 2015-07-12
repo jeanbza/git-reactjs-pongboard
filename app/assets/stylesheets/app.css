@@ -30,3 +30,7 @@
     display: inline;
     color: gray;
 }
+
+.match a {
+    opacity: 1 !important;
+}

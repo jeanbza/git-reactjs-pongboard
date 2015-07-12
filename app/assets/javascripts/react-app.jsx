@@ -2,9 +2,9 @@ var Match = React.createClass({
     render: function() {
         return (
             <div className="match">
-                <div className="participant ui green label">{this.props.winner}</div>
+                <div className="participant ui green label"><a href={"https://twitter.com/" + this.props.winner} target="_blank">{this.props.winner}</a></div>
                 <h2 className="versus">vs</h2>
-                <div className="participant ui olive label">{this.props.loser}</div>
+                <div className="participant ui olive label"><a href={"https://twitter.com/" + this.props.loser} target="_blank">{this.props.loser}</a></div>
             </div>
         );
     }
