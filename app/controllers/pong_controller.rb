@@ -1,5 +1,11 @@
 class PongController < ActionController::Base
-  def index
+  def feed
+  end
+
+  def leaderboard
+  end
+
+  def about
   end
 
   def data
