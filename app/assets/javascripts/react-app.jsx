@@ -4,7 +4,7 @@ var Match = React.createClass({
             <div className="match">
                 <div className="participant ui green label">{this.props.winner}</div>
                 <h2 className="versus">vs</h2>
-                <div className="participant ui red label">{this.props.loser}</div>
+                <div className="participant ui olive label">{this.props.loser}</div>
             </div>
         );
     }
