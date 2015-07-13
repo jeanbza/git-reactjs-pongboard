@@ -12,5 +12,5 @@ Ping Pong leaderboard using [Racquet.io](racquet.io) as data source.
 - Data store to reduce load times and excess API calls
 - Match input to remove dependency on racquet.io
 - Groups, so that this is not denver labs specific
-- Better UI
+- Better UI (resize/mobile friendly, for instance)
 - Twitter integration
