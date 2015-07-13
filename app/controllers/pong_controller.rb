@@ -41,8 +41,6 @@ class PongController < ActionController::Base
 
     sorted_players = players.sort_by { |name, player| player.rating}.reverse!
 
-    foo = sorted_players.map { |arr| {name: arr[0], rating: arr[1].rating}}
-
     render json: sorted_players.map { |arr| {name: arr[0], rating: arr[1].rating}}
   end
 end
