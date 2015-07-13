@@ -7,7 +7,8 @@
         <%= stylesheet_link_tag "application", media: "all" %>
     </head>
     <body>
-        <div class="ui inverted teal three item menu">
+        <div class="ui inverted teal four item menu">
+            <a class="item code" href="https://github.com/jadekler/git-reactjs-pongboard" target="blank">Source Code</a>
             <a class="<%= 'active' if current_page?('/') %> item" href="/">Feed</a>
             <a class="<%= 'active' if current_page?('/leaderboard') %> item" href="/leaderboard">Leaderboard</a>
             <a class="<%= 'active' if current_page?('/about') %> item" href="/about">About</a>
