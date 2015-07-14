@@ -12,8 +12,11 @@ class PongController < ActionController::Base
   def about
   end
 
+  def clubs
+  end
+
   def feeddata
-    data = HTTParty.get('http://racquet.io/pivotal-denver/matches.json?limit=200')
+    data = HTTParty.get("http://racquet.io/#{params[:club]}/matches.json?limit=200")
 
     render json: data.body
   end
@@ -21,12 +24,12 @@ class PongController < ActionController::Base
   def leaderboarddata
     players = {}
 
-    data = JSON.parse(HTTParty.get('http://racquet.io/pivotal-denver/matches.json?limit=200').body)
+    data = JSON.parse(HTTParty.get("http://racquet.io/#{params[:club]}/matches.json?limit=200").body)
     matches = data['results'].reverse!
 
     matches.each do |match|
-      winner = match['winner']
-      loser = match['loser']
+        winner = match['winner']
+        loser = match['loser']
 
       if (!players.has_key? winner)
         players[winner] = Elo::Player.new

@@ -50,7 +50,7 @@ var LeaderBoard = React.createClass({
     }
 });
 
-var endpoint = "http://" + window.location.host + "/leaderboard/data"
+var endpoint = window.location.origin + window.location.pathname + '/data'
 
 React.render(
     <LeaderBoard url={endpoint} />,
