@@ -1,0 +1,11 @@
+default: &default
+  adapter: mysql2
+  port: 3306
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: pongboard
+  username: root
+  host: 127.0.0.1
