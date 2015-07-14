@@ -12,10 +12,11 @@ class AddMatchesAndClubs < ActiveRecord::Migration
     create_table :matches do |t|
       t.string :winner
       t.string :loser
-
-      add_reference :clubs, :club, index: true, foreign_key: true
+      t.integer :club_id
 
       t.timestamps null: false
     end
+
+    add_reference :matches, :clubs, index: true, foreign_key: true
   end
 end

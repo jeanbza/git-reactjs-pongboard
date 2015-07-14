@@ -20,17 +20,19 @@ ActiveRecord::Schema.define(version: 20150714182755) do
     t.string   "country",    limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.integer  "club_id",    limit: 4
   end
-
-  add_index "clubs", ["club_id"], name: "index_clubs_on_club_id", using: :btree
 
   create_table "matches", force: :cascade do |t|
     t.string   "winner",     limit: 255
     t.string   "loser",      limit: 255
+    t.integer  "club_id",    limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "clubs_id",   limit: 4
   end
 
-  add_foreign_key "clubs", "clubs"
+  add_index "matches", ["club_id"], name: "fk_rails_10d81630ec", using: :btree
+  add_index "matches", ["clubs_id"], name: "index_matches_on_clubs_id", using: :btree
+
+  add_foreign_key "matches", "clubs"
 end
