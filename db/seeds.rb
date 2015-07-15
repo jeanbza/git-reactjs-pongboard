@@ -1,4 +1,3 @@
-Club.create(name: 'Denver-labs', city: 'Denver', state: 'CO', country: 'USA')
 Club.create(name: 'Pivotal Denver', country: 'USA')
 Club.create(name: 'Pivotal Labs Chicago', country: 'USA')
 Club.create(name: 'Friend Sharing', country: 'USA')

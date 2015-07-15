@@ -13,6 +13,7 @@ class AddMatchesAndClubs < ActiveRecord::Migration
       t.string :winner
       t.string :loser
       t.integer :club_id
+      t.integer :racquet_match_id
 
       t.timestamps null: false
     end
