@@ -1,4 +1,6 @@
 ---
 applications:
   - name: pongboard
-  - buildpack: https://github.com/cloudfoundry/ruby-buildpack.git
+    buildpack: https://github.com/cloudfoundry/ruby-buildpack.git
+    services:
+      - mysql_pongboard
