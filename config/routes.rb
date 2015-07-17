@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/', to: 'pong#clubs'
   get '/clubs', to: 'pong#clubs'
 
-  get '/:club/feed', to: 'pong#feeddata'
+  get '/:club/feed', to: 'pong#feed'
   get '/:club/feed/data', to: 'pong#feeddata'
   get '/feed', to: 'pong#feeddata'
 
