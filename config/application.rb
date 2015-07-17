@@ -12,10 +12,10 @@ end
 
 scheduler = Rufus::Scheduler.new
 
-Rake::Task.clear
-Pong::Application.load_tasks
+scheduler.every '5s' do
+  Rake::Task.clear
+  Pong::Application.load_tasks
 
-scheduler.every '5m' do
   Rake::Task[:import_racquet_data].reenable # in case you're going to invoke the same task second time.
   Rake::Task[:import_racquet_data].invoke
 end
