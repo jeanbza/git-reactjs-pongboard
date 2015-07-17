@@ -12,7 +12,7 @@ end
 
 scheduler = Rufus::Scheduler.new
 
-scheduler.every '5s' do
+scheduler.every '5m' do
   Rake::Task.clear
   Pong::Application.load_tasks
 
