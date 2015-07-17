@@ -8,3 +8,5 @@ vendor/assets/semantic/gulpfile.js
 tmp*
 log*
 *schema.rb
+.rake_tasks~
+**/.DS_Store

@@ -7,39 +7,57 @@ class PongController < ActionController::Base
   end
 
   def leaderboard
+    if params[:club] == nil
+      redirect_to '/clubs'
+    end
   end
 
   def about
   end
 
   def clubs
+    @clubs = Club.all.map do |club|
+      # players_count = ActiveRecord::Base.execute("select count(*) from #{club.name} ")
+      {
+        name: club.name,
+        resource_name: club.name.downcase.gsub(/ /, '-'),
+        player_count: '?'
+      }
+    end
   end
 
   def feeddata
-    data = HTTParty.get("http://racquet.io/#{params[:club]}/matches.json?limit=200")
-
-    render json: data.body
-  end
+    if params[:club] == nil
+      redirect_to '/clubs'
+    else
+      data = HTTParty.get("http://racquet.io/#{params[:club]}/matches.json?limit=200")
+      render json: data.body
+    end
+end
 
   def leaderboarddata
     players = {}
 
-    data = JSON.parse(HTTParty.get("http://racquet.io/#{params[:club]}/matches.json?limit=200").body)
-    matches = data['results'].reverse!
+    if params[:club] == nil
+      redirect_to '/clubs'
+    else
+      data = JSON.parse(HTTParty.get("http://racquet.io/#{params[:club]}/matches.json?limit=200").body)
+      matches = data['results'].reverse!
 
-    matches.each do |match|
-        winner = match['winner']
-        loser = match['loser']
+      matches.each do |match|
+          winner = match['winner']
+          loser = match['loser']
 
-      if (!players.has_key? winner)
-        players[winner] = Elo::Player.new
+        if (!players.has_key? winner)
+          players[winner] = Elo::Player.new
+        end
+
+        if (!players.has_key? loser)
+          players[loser] = Elo::Player.new
+        end
+
+        players[winner].wins_from(players[loser])
       end
-
-      if (!players.has_key? loser)
-        players[loser] = Elo::Player.new
-      end
-
-      players[winner].wins_from(players[loser])
     end
 
     sorted_players = players.sort_by { |name, player| player.rating}.reverse!

@@ -48,3 +48,8 @@
 .leaderboard .player .label .detail {
     text-align: right;
 }
+
+.club {
+  margin-bottom: 10px;
+  display: inline-block;
+}
