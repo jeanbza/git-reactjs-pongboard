@@ -17,13 +17,15 @@ class PongController < ActionController::Base
 
   def clubs
     @clubs = Club.all.map do |club|
-      # players_count = ActiveRecord::Base.execute("select count(*) from #{club.name} ")
       {
         name: club.name,
         resource_name: club.name.downcase.gsub(/ /, '-'),
-        player_count: '?'
+        player_count: Club.members_in_club(club.id)
       }
     end
+
+    @clubs.sort_by! do |item| item[:player_count] end
+    @clubs.reverse!
   end
 
   def feeddata
