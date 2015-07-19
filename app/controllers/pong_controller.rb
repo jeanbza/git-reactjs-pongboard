@@ -19,6 +19,7 @@ class PongController < ActionController::Base
     @clubs = Club.all.map do |club|
       {
         name: club.name,
+        country: club.country.downcase,
         resource_name: club.name.downcase.gsub(/ /, '-'),
         player_count: Club.members_in_club(club.id)
       }

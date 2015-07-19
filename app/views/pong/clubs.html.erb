@@ -2,7 +2,7 @@
   <% @clubs.each do |club| %>
   <div class="club">
     <a class="ui blue image label" href="/<%= club[:resource_name] %>/leaderboard">
-      <i class="us flag"></i>
+      <i class="<%= club[:country] %> flag"></i>
       <%= club[:name] %>
       <div class="detail"><%= club[:player_count] %></div>
     </a>
