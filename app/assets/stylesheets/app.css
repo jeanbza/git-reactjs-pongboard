@@ -40,13 +40,8 @@
     opacity: .5;
 }
 
-.leaderboard .player .label {
-    margin: 1% 0;
-    font-size: 3rem;
-}
-
-.leaderboard .player .label .detail {
-    text-align: right;
+#leaderboard table {
+  width: 100%;
 }
 
 .club {

@@ -1,12 +1,11 @@
 var Player = React.createClass({
     render: function() {
         return (
-            <div className="player">
-                <a className={"ui image label " + this.props.colour}>
-                    {this.props.name}
-                    <div className="detail">{this.props.rating}</div>
-                </a>
-            </div>
+            <tr className="player">
+                <td><h4 className="ui header"><div className="content">{this.props.name}</div></h4></td>
+                <td>{this.props.rating}</td>
+                <td>11</td>
+            </tr>
         );
     }
 });
@@ -43,9 +42,18 @@ var LeaderBoard = React.createClass({
     },
     render: function() {
         return (
-            <div className="leaderboard">
-                {this.state.players ? this.state.players : <h1 className='loading'>Loading leaderboard data...</h1>}
-            </div>
+          <table className="ui very basic collapsing celled table">
+            <thead><tr>
+              <th>Name</th>
+              <th>ELO Score</th>
+              <th>ELO Rank</th>
+            </tr></thead>
+            <tbody>
+                {this.state.players ?
+                  this.state.players :
+                  <tr><td className='loading'>Loading leaderboard data...</td></tr>}
+            </tbody>
+          </table>
         );
     }
 });
