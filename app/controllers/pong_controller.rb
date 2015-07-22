@@ -33,10 +33,9 @@ class PongController < ActionController::Base
     if params[:club] == nil
       redirect_to '/clubs'
     else
-      data = HTTParty.get("http://racquet.io/#{params[:club]}/matches.json?limit=200")
-      render json: data.body
+      render json: Match.all.to_json
     end
-end
+  end
 
   def leaderboarddata
     players = {}
@@ -44,8 +43,8 @@ end
     if params[:club] == nil
       redirect_to '/clubs'
     else
-      data = JSON.parse(HTTParty.get("http://racquet.io/#{params[:club]}/matches.json?limit=200").body)
-      matches = data['results'].reverse!
+      formatted_club_name = format_club_name params[:club]
+      matches = Match.joins(:club).where('lower(clubs.name) = ?', 'pivotal denver').order(created_at: 'desc')
 
       matches.each do |match|
           winner = match['winner']
@@ -66,5 +65,10 @@ end
     sorted_players = players.sort_by { |name, player| player.rating}.reverse!
 
     render json: sorted_players.map { |arr| {name: arr[0], rating: arr[1].rating}}
+  end
+
+  def format_club_name(club_name)
+    formatted_club_name = club_name.gsub(/[ \.\/]/, '-').gsub(/[-]+/, '-').downcase
+    formatted_club_name[0...-1] if formatted_club_name[-1, 1] == '-' # Remove last character if -
   end
 end

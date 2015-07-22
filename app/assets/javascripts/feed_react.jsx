@@ -20,7 +20,7 @@ var PongBoard = React.createClass({
             dataType: 'json',
             cache: false,
             success: function(data) {
-                var matches = data['results'].map(function (match) {
+                var matches = data.map(function (match) {
                     return (
                         <Match winner={match.winner} loser={match.loser} />
                     );
