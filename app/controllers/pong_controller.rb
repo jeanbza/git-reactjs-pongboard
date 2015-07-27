@@ -33,7 +33,8 @@ class PongController < ActionController::Base
     if params[:club] == nil
       redirect_to '/clubs'
     else
-      render json: Match.all.to_json
+      formatted_club_name = params[:club].gsub(/-/, ' ')
+      render json: Match.joins(:club).where('lower(clubs.name) = ?', formatted_club_name).to_json
     end
   end
 
@@ -43,8 +44,8 @@ class PongController < ActionController::Base
     if params[:club] == nil
       redirect_to '/clubs'
     else
-      formatted_club_name = format_club_name params[:club]
-      matches = Match.joins(:club).where('lower(clubs.name) = ?', 'pivotal denver').order(created_at: 'desc')
+      formatted_club_name = params[:club].gsub(/-/, ' ')
+      matches = Match.joins(:club).where('lower(clubs.name) = ?', formatted_club_name).order(created_at: 'desc')
 
       matches.each do |match|
           winner = match['winner']
@@ -65,10 +66,5 @@ class PongController < ActionController::Base
     sorted_players = players.sort_by { |name, player| player.rating}.reverse!
 
     render json: sorted_players.map { |arr| {name: arr[0], rating: arr[1].rating}}
-  end
-
-  def format_club_name(club_name)
-    formatted_club_name = club_name.gsub(/[ \.\/]/, '-').gsub(/[-]+/, '-').downcase
-    formatted_club_name[0...-1] if formatted_club_name[-1, 1] == '-' # Remove last character if -
   end
 end
