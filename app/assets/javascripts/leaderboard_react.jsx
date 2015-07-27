@@ -4,7 +4,7 @@ var Player = React.createClass({
             <tr className="player">
                 <td><h4 className="ui header"><div className="content">{this.props.name}</div></h4></td>
                 <td>{this.props.rating}</td>
-                <td>11</td>
+                <td>{this.props.rank}</td>
             </tr>
         );
     }
@@ -22,7 +22,7 @@ var LeaderBoard = React.createClass({
             success: function(data) {
                 var players = data.map(function (player, index) {
                     return (
-                        <Player name={player.name} rating={player.rating} />
+                        <Player name={player.name} rating={player.rating} rank={index + 1}/>
                     );
                 });
 
