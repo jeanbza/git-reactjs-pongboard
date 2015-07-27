@@ -67,4 +67,15 @@ class PongController < ActionController::Base
 
     render json: sorted_players.map { |arr| {name: arr[0], rating: arr[1].rating}}
   end
+
+  def matches
+    club_record = Club.find_by name: params[:club]
+    render json: '{"successful": "true"}'
+    # match = Match.create(winner: nil, loser: nil, club_id: club_record.id)
+  end
+
+  def format_club_name(club_name)
+    formatted_club_name = club_name.gsub(/[ \.\/]/, '-').gsub(/[-]+/, '-').downcase
+    formatted_club_name[0...-1] if formatted_club_name[-1, 1] == '-' # Remove last character if -
+  end
 end
