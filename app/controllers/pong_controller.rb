@@ -7,7 +7,7 @@ class PongController < ActionController::Base
   end
 
   def feed
-    if params[:club] == nil do
+    if params[:club] == nil
       redirect_to '/clubs'
     end
   end
