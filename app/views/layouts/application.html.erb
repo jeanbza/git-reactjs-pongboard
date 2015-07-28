@@ -7,7 +7,7 @@
         <%= stylesheet_link_tag "application", media: "all" %>
     </head>
     <body>
-        <div class="ui inverted teal four item menu">
+        <div class="ui inverted teal four item menu app-header">
             <a class="<%= 'active' if current_page?('/') %> item" href="/">Clubs</a>
 
             <% if params[:club] %>
