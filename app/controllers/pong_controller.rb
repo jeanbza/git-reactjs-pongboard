@@ -3,30 +3,13 @@ require 'elo'
 class PongController < ActionController::Base
   layout 'application'
 
-  def feed
-  end
-
-  def leaderboard
-    if params[:club] == nil
-      redirect_to '/clubs'
-    end
-  end
-
   def about
   end
 
-  def clubs
-    @clubs = Club.all.map do |club|
-      {
-        name: club.name,
-        country: club.country.downcase,
-        resource_name: club.name.downcase.gsub(/ /, '-'),
-        player_count: Club.members_in_club(club.id)
-      }
+  def feed
+    if params[:club] == nil do
+      redirect_to '/clubs'
     end
-
-    @clubs.sort_by! do |item| item[:player_count] end
-    @clubs.reverse!
   end
 
   def feeddata
@@ -35,6 +18,12 @@ class PongController < ActionController::Base
     else
       formatted_club_name = params[:club].gsub(/-/, ' ')
       render json: Match.joins(:club).where('lower(clubs.name) = ?', formatted_club_name).to_json
+    end
+  end
+
+  def leaderboard
+    if params[:club] == nil
+      redirect_to '/clubs'
     end
   end
 

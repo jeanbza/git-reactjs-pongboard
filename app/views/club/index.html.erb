@@ -13,7 +13,7 @@
   </div>
   <div class="two wide column">
     <h2>Add Club</h2>
-    <div class="ui form">
+    <%= form_tag({controller: 'club', action: 'create'}, method: 'post', class: 'ui form') do %>
       <div class="field">
         <label>Club Name</label>
         <input name="club-name" placeholder="Awesome Co. Club" type="text">
@@ -31,7 +31,7 @@
         <%= render 'partials/country_selector' %>
       </div>
       <button class="ui button" type="submit">Submit</button>
-    </form>
+    <% end %>
   </div>
 </div>
 

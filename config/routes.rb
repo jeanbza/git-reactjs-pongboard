@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  get '/', to: 'pong#clubs'
   get '/about', to: 'pong#about'
-  get '/clubs', to: 'pong#clubs'
-  get '/feed', to: 'pong#feeddata'
+
+  get '/', to: 'club#index'
+  get '/clubs', to: 'club#index'
+  post '/clubs', to: 'club#create'
+
+  get '/feed', to: 'club#feed'
   get '/leaderboard', to: 'pong#leaderboard'
 
   scope '/:club' do
