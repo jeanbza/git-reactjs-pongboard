@@ -16,6 +16,8 @@ class ClubController < ActionController::Base
   end
 
   def create
+    Club.create(:name => params['club-name'], :city => params['city'], :state => params['state'], :country => params['country'])
 
+    redirect_to action: 'index'
   end
 end
