@@ -3,40 +3,13 @@
     <h2>All Clubs</h2>
     <div class="ui grid center aligned">
       <div class="four wide column">
-        <div class="ui relaxed divided list">
-          <% @clubs_1_step.each do |club| %>
-            <div class="item">
-              <div class="content">
-                <a class="header" href="/<%= club[:resource_name] %>/leaderboard"><i class="<%= club[:country] %> flag"></i> <%= club[:name] %></a>
-                <div class="description"><%= club[:player_count][0] %> players</div>
-              </div>
-            </div>
-          <% end %>
-        </div>
+        <%= render(:partial => 'partials/club_column', :locals => {:clubs => @clubs_1_step}) %>
       </div>
       <div class="four wide column">
-        <div class="ui relaxed divided list">
-          <% @clubs_2_step.each do |club| %>
-            <div class="item">
-              <div class="content">
-                <a class="header" href="/<%= club[:resource_name] %>/leaderboard"><i class="<%= club[:country] %> flag"></i> <%= club[:name] %></a>
-                <div class="description"><%= club[:player_count][0] %> players</div>
-              </div>
-            </div>
-          <% end %>
-        </div>
+        <%= render(:partial => 'partials/club_column', :locals => {:clubs => @clubs_2_step}) %>
       </div>
       <div class="four wide column">
-        <div class="ui relaxed divided list">
-          <% @clubs_3_step.each do |club| %>
-            <div class="item">
-              <div class="content">
-                <a class="header" href="/<%= club[:resource_name] %>/leaderboard"><i class="<%= club[:country] %> flag"></i> <%= club[:name] %></a>
-                <div class="description"><%= club[:player_count][0] %> players</div>
-              </div>
-            </div>
-          <% end %>
-        </div>
+        <%= render(:partial => 'partials/club_column', :locals => {:clubs => @clubs_3_step}) %>
       </div>
     </div>
   </div>
