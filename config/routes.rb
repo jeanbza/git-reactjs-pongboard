@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get '/about', to: 'pong#about'
+  get '/about', to: 'about#index'
 
   get '/', to: 'club#index'
   get '/clubs', to: 'club#index'
