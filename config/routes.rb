@@ -7,6 +7,11 @@ Rails.application.routes.draw do
           get :data
         end
       end
+      resource :leaderboard, only: :show do
+        member do
+          get :data
+        end
+      end
     end
   end
 
