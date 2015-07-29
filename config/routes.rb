@@ -15,10 +15,6 @@ Rails.application.routes.draw do
     end
   end
 
-  scope '/:club' do
-    post '/matches', to: 'pong#matches'
-  end
-
   get '/about', to: 'about#index'
 
   root to: 'clubs#index'
