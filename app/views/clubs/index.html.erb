@@ -2,9 +2,11 @@
   <div class="ten wide column">
     <h2>All Clubs</h2>
     <div class="ui grid center aligned">
-      <% @clubs.each do |clubs_column| %>
+      <% in_columns(@clubs).each do |clubs| %>
         <div class="four wide column">
-          <%= render(:partial => 'partials/club_column', :locals => {:clubs => clubs_column}) %>
+          <div class="ui relaxed divided list">
+            <%= render clubs %>
+          </div>
         </div>
       <% end %>
     </div>

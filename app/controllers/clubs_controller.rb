@@ -1,11 +1,7 @@
 class ClubsController < ApplicationController
   def index
     @club = Club.new
-
-    @clubs = Club.all.to_a
-    @clubs.sort_by!(&:player_count).reverse!
-
-    @clubs = @clubs.in_groups_of(3, nil).transpose.map(&:compact)
+    @clubs = Club.all
   end
 
   def create

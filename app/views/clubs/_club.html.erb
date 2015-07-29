@@ -2,7 +2,7 @@
   <div class="content">
     <%= link_to club_leaderboard_path(club), class: 'header' do %>
       <i class="<%= club.country.downcase %> flag"></i> <%= club.name %>
-<% end %>
+    <% end %>
     <div class="description"><%= club.player_count.first %> players</div>
   </div>
 </div>
