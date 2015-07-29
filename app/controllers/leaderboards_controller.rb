@@ -4,8 +4,7 @@ class LeaderboardsController < ApplicationController
       hash[key] = Elo::Player.new
     end
 
-    formatted_club_name = params[:club_id].gsub(/-/, ' ')
-    matches = Match.joins(:club).where('lower(clubs.name) = ?', formatted_club_name).order(created_at: 'desc')
+    matches = Match.for_club(params[:club_id]).order(created_at: 'desc')
 
     matches.each do |match|
       players[match.winner].wins_from(players[match.loser])

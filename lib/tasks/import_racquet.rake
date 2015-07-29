@@ -1,4 +1,4 @@
-# Import data from racquet.io
+desc 'Import data from racquet.io'
 task :import_racquet_data => :environment do
   puts 'Importing data from Racquet.io'
 

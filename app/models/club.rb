@@ -1,6 +1,14 @@
 class Club < ActiveRecord::Base
+  before_validation :set_slug
+
+  validates :slug, presence: true
+
+  def set_slug
+    self.slug = name.downcase.gsub(/ /, '-')
+  end
+
   def to_param
-    name.downcase.gsub(/ /, '-')
+    slug
   end
 
   def player_count
