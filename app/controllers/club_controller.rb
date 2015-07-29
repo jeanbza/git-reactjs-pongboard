@@ -4,9 +4,9 @@ class ClubController < ActionController::Base
   def index
     clubs = Club.all.map do |club|
       {
+        id: club.id,
         name: club.name,
         country: club.country.downcase,
-        resource_name: club.name.downcase.gsub(/ /, '-'),
         player_count: Club.members_in_club(club.id)
       }
     end

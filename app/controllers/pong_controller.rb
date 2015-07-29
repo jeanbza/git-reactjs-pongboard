@@ -7,22 +7,21 @@ class PongController < ActionController::Base
   end
 
   def feed
-    if params[:club] == nil
+    if params[:club_id] == nil
       redirect_to '/clubs'
     end
   end
 
   def feeddata
-    if params[:club] == nil
+    if params[:club_id] == nil
       redirect_to '/clubs'
     else
-      formatted_club_name = params[:club].gsub(/-/, ' ')
-      render json: Match.joins(:club).where('lower(clubs.name) = ?', formatted_club_name).to_json
+      render json: Match.where(club_id: params[:club_id]).to_json
     end
   end
 
   def leaderboard
-    if params[:club] == nil
+    if params[:club_id] == nil
       redirect_to '/clubs'
     end
   end
@@ -30,11 +29,10 @@ class PongController < ActionController::Base
   def leaderboarddata
     players = {}
 
-    if params[:club] == nil
+    if params[:club_id] == nil
       redirect_to '/clubs'
     else
-      formatted_club_name = params[:club].gsub(/-/, ' ')
-      matches = Match.joins(:club).where('lower(clubs.name) = ?', formatted_club_name).order(created_at: 'desc')
+      matches = Match.where(club_id: params[:club_id]).order(created_at: 'desc')
 
       matches.each do |match|
           winner = match['winner']

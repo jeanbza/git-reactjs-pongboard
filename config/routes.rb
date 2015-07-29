@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/feed', to: 'club#feed'
   get '/leaderboard', to: 'pong#leaderboard'
 
-  scope '/:club' do
+  scope '/:club_id' do
     get '/feed', to: 'pong#feed'
     get '/feed/data', to: 'pong#feeddata'
     get '/leaderboard', to: 'pong#leaderboard'
