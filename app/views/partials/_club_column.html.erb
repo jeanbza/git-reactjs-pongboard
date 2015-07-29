@@ -2,8 +2,10 @@
   <% clubs.each do |club| %>
     <div class="item">
       <div class="content">
-        <a class="header" href="/<%= club[:resource_name] %>/leaderboard"><i class="<%= club[:country] %> flag"></i> <%= club[:name] %></a>
-        <div class="description"><%= club[:player_count][0] %> players</div>
+        <%= link_to leaderboard_path(club), class: 'header' do %>
+          <i class="<%= club.country %> flag"></i> <%= club.name %>
+        <% end %>
+        <div class="description"><%= club.player_count.first %> players</div>
       </div>
     </div>
   <% end %>

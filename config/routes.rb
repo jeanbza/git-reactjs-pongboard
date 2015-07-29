@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   get '/about', to: 'about#index'
 
-  get '/', to: 'club#index'
-  get '/clubs', to: 'club#index'
-  post '/clubs', to: 'club#create'
+  resources :clubs, only: [:index, :create] do
+    member do
+      resource :leaderboard, only: :show
+    end
+  end
 
-  get '/feed', to: 'club#feed'
+  get '/feed', to: 'clubs#feed'
   get '/leaderboard', to: 'pong#leaderboard'
 
   scope '/:club' do
@@ -15,4 +17,6 @@ Rails.application.routes.draw do
     get '/leaderboard/data', to: 'pong#leaderboarddata'
     post '/matches', to: 'pong#matches'
   end
+
+  root to: 'clubs#index'
 end

@@ -1,4 +1,16 @@
 class Club < ActiveRecord::Base
+  def to_param
+    name.downcase.gsub(/ /, '-')
+  end
+
+  def player_count
+    self.class.members_in_club(id)
+  end
+
+  def country
+    read_attribute(:country).downcase
+  end
+
   def self.members_in_club(id)
     conn = ActiveRecord::Base.connection
     result = conn.execute(%Q{
