@@ -15,11 +15,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/leaderboard', to: 'pong#leaderboard'
-
   scope '/:club' do
-    get '/leaderboard', to: 'pong#leaderboard'
-    get '/leaderboard/data', to: 'pong#leaderboarddata'
     post '/matches', to: 'pong#matches'
   end
 
