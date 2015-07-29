@@ -1,6 +1,4 @@
-class AboutController < ActionController::Base
-  layout 'application'
-
+class AboutController < ApplicationController
   def about
   end
 end
