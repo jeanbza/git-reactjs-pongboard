@@ -2,8 +2,8 @@
   <% clubs.each do |club| %>
     <div class="item">
       <div class="content">
-        <%= link_to leaderboard_path(club), class: 'header' do %>
-          <i class="<%= club.country %> flag"></i> <%= club.name %>
+        <%= link_to club_leaderboard_path(club), class: 'header' do %>
+          <i class="<%= club.country.downcase %> flag"></i> <%= club.name %>
         <% end %>
         <div class="description"><%= club.player_count.first %> players</div>
       </div>

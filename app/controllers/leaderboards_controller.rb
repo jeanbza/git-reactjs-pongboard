@@ -2,7 +2,7 @@ class LeaderboardsController < ApplicationController
   def data
     players = {}
 
-    formatted_club_name = params[:id].gsub(/-/, ' ')
+    formatted_club_name = params[:club_id].gsub(/-/, ' ')
     matches = Match.joins(:club).where('lower(clubs.name) = ?', formatted_club_name).order(created_at: 'desc')
 
     matches.each do |match|

@@ -4,14 +4,6 @@ class Club < ActiveRecord::Base
   end
 
   def player_count
-    self.class.members_in_club(id)
-  end
-
-  def country
-    read_attribute(:country).downcase
-  end
-
-  def self.members_in_club(id)
     conn = ActiveRecord::Base.connection
     result = conn.execute(%Q{
       select count(*) as members_in_club
@@ -29,11 +21,6 @@ class Club < ActiveRecord::Base
       ) y
     })
 
-    final_result = 0
-    result.each do |result|
-      final_result = result
-    end
-
-    final_result
+    result.to_a.last || 0
   end
 end
