@@ -10,3 +10,7 @@ gem 'activerecord'
 gem 'mysql2'
 gem 'rake'
 gem 'rufus-scheduler'
+
+group :development do
+  gem 'puma'
+end
