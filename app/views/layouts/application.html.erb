@@ -10,7 +10,7 @@
         <div class="ui inverted teal four item menu app-header">
             <a class="<%= 'active' if current_page?('/') %> item" href="/">Clubs</a>
 
-            <% if params[:club] %>
+            <% if params[:club_id] %>
                 <a class="<%= 'active' if current_page?(action: 'feed') %> item" href="feed">Feed</a>
                 <a class="<%= 'active' if current_page?(action: 'leaderboard') %> item" href="leaderboard">Leaderboard</a>
             <% end %>
