@@ -1,2 +1,0 @@
-class PongController < ApplicationController
-end
