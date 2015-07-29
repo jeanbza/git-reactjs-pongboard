@@ -6,13 +6,11 @@ Rails.application.routes.draw do
   post '/clubs', to: 'club#create'
 
   get '/feed', to: 'club#feed'
-  get '/leaderboard', to: 'pong#leaderboard'
+  get '/leaderboard', to: 'match#index'
 
   scope '/:club_id' do
-    get '/feed', to: 'pong#feed'
-    get '/feed/data', to: 'pong#feeddata'
-    get '/leaderboard', to: 'pong#leaderboard'
-    get '/leaderboard/data', to: 'pong#leaderboarddata'
-    post '/matches', to: 'pong#matches'
+    get '/leaderboard', to: 'match#index'
+    get '/leaderboard/feeddata', to: 'match#feeddata'
+    get '/leaderboard/rankingdata', to: 'match#rankingdata'
   end
 end

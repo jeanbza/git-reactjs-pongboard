@@ -1,32 +1,29 @@
 require 'elo'
 
-class PongController < ActionController::Base
+class MatchController < ActionController::Base
   layout 'application'
 
-  def about
-  end
-
-  def feed
+  def index
     if params[:club_id] == nil
       redirect_to '/clubs'
     end
   end
 
   def feeddata
+    puts 'helloooo'
+
     if params[:club_id] == nil
       redirect_to '/clubs'
     else
+      puts "*"*80
+      foo = Match.where(club_id: params[:club_id])
+
+      puts foo
       render json: Match.where(club_id: params[:club_id]).to_json
     end
   end
 
-  def leaderboard
-    if params[:club_id] == nil
-      redirect_to '/clubs'
-    end
-  end
-
-  def leaderboarddata
+  def rankingdata
     players = {}
 
     if params[:club_id] == nil
