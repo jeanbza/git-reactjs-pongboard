@@ -1,17 +1,4 @@
-require 'elo'
-
-class PongController < ActionController::Base
-  layout 'application'
-
-  def about
-  end
-
-  def feed
-    if params[:club] == nil
-      redirect_to '/clubs'
-    end
-  end
-
+class PongController < ApplicationController
   def feeddata
     if params[:club] == nil
       redirect_to '/clubs'
