@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
     resource :leaderboard, only: :show do
       member do
-        get :data
+        get :feed
+        get :rankings
       end
     end
   end

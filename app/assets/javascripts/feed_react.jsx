@@ -42,7 +42,7 @@ var PongBoard = React.createClass({
     }
 });
 
-var endpoint = window.location.origin + window.location.pathname + "/feeddata"
+var endpoint = window.location.origin + window.location.pathname + "/feed"
 
 React.render(
     <PongBoard url={endpoint} />,

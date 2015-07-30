@@ -1,5 +1,5 @@
 class LeaderboardsController < ApplicationController
-  def data
+  def rankings
     players = Hash.new do |hash, key|
       hash[key] = Elo::Player.new
     end
@@ -13,5 +13,10 @@ class LeaderboardsController < ApplicationController
     sorted_players = players.sort_by { |name, player| player.rating}.reverse!
 
     render json: sorted_players.map { |arr| {name: arr[0], rating: arr[1].rating}}
+  end
+
+  def feed
+    @matches = Match.for_club(params[:club_id])
+    render json: @matches
   end
 end

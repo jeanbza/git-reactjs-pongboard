@@ -51,7 +51,7 @@ var LeaderBoard = React.createClass({
     }
 });
 
-var endpoint = window.location.origin + window.location.pathname + '/rankingdata'
+var endpoint = window.location.origin + window.location.pathname + '/rankings'
 
 React.render(
     <LeaderBoard url={endpoint} />,
