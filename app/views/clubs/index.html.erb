@@ -13,7 +13,7 @@
   </div>
   <div class="two wide column">
     <h2>Add Club</h2>
-    <%= form_for(@club, class: 'ui form') do |f| %>
+    <%= form_for(@club, html: {class: 'ui form'}) do |f| %>
       <div class="field">
         <%= f.label :name, 'Club Name' %>
         <%= f.text_field :name, placeholder: 'Awesome Co. Club' %>
