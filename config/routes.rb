@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   resources :clubs, only: [:index, :create] do
-    resource :leaderboard, only: :show
-
     resource :feed, only: :show do
       member do
         get :data
