@@ -1,45 +1,9 @@
-.menu {
-    border-radius: 0 !important;
-}
-
-.app-header.menu {
-  height: 8%;
-}
-
-.menu .item {
-    font-size: 2.5rem;
+.ui.menu {
+  border-radius: 0;
 }
 
 .grid {
-    width: 100%;
-}
-
-#feed, #leaderboard {
-    text-align: center;
-}
-
-.match {
-    margin-bottom: 5%;
-}
-
-.match .participant {
-    width: 40%;
-    font-size: 2.5rem;
-    margin: 0 5%;
-}
-
-.match .versus {
-    display: inline;
-    color: gray;
-}
-
-.match a {
-    opacity: 1 !important;
-}
-
-.loading {
-    margin-top: 20%;
-    opacity: .5;
+  width: 100%;
 }
 
 #leaderboard table {

@@ -1,11 +1,10 @@
 var Match = React.createClass({
     render: function() {
         return (
-            <div className="match">
-                <div className="participant ui green label"><a href={"https://twitter.com/" + this.props.winner} target="_blank">{this.props.winner}</a></div>
-                <h2 className="versus">vs</h2>
-                <div className="participant ui olive label"><a href={"https://twitter.com/" + this.props.loser} target="_blank">{this.props.loser}</a></div>
-            </div>
+            <tr className="match">
+                <td className=""><a href={"https://twitter.com/" + this.props.winner} target="_blank">{this.props.winner}</a></td>
+                <td className=""><a href={"https://twitter.com/" + this.props.loser} target="_blank">{this.props.loser}</a></td>
+            </tr>
         );
     }
 });
@@ -35,9 +34,17 @@ var PongBoard = React.createClass({
     },
     render: function() {
         return (
-            <div>
-                {this.state.matches ? this.state.matches : <h1 className='loading'>Loading pong data...</h1>}
-            </div>
+          <table className="ui very basic table">
+            <thead>
+              <tr>
+                <th>Winner</th>
+                <th>Loser</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.matches ? this.state.matches : <td className='loading'>Loading pong data...</td>}
+            </tbody>
+          </table>
         );
     }
 });

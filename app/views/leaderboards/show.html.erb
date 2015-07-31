@@ -1,11 +1,14 @@
 <%= render 'partials/sub_menu' %>
 <div class="ui grid">
-    <div class="four wide column">
-      <div id="feed"></div>
-    </div>
-    <div class="eight wide column">
-        <div id="leaderboard"></div>
-    </div>
+  <div class="one wide column"></div>
+  <div class="three wide column">
+    <div id="feed"></div>
+  </div>
+  <div class="one wide column"></div>
+  <div class="ten wide column">
+      <div id="leaderboard"></div>
+  </div>
+  <div class="one wide column"></div>
 </div>
 
 <%= javascript_include_tag 'leaderboard', 'data-turbolinks-track' => true %>
