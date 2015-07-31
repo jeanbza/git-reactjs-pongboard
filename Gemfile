@@ -7,7 +7,7 @@ gem 'react-rails', '~> 1.0'
 gem 'httparty'
 gem 'elo'
 gem 'activerecord'
-gem 'mysql2'
+gem 'activerecord-postgresql-adapter'
 gem 'rake'
 gem 'rufus-scheduler'
 
