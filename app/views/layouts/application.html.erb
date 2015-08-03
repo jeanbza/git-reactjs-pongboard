@@ -17,9 +17,24 @@
         </script>
     </head>
     <body>
-        <div class="ui two item green inverted large menu app-header">
+        <div class="ui three item green inverted large menu app-header">
             <a class="<%= 'active' if current_page?('/clubs') %> item" href="/">Clubs</a>
             <a class="<%= 'active' if current_page?('/about') %> item" href="/about">About</a>
+            <div class="item">
+              <form class="ui form">
+                <div class="two fields">
+                  <div class="field">
+                    <input name="winner" placeholder="@winner" type="text">
+                  </div>
+                  <div class="field">
+                    <input name="loser" placeholder="@loser" type="text">
+                  </div>
+                  <button class="ui icon button" type="submit">
+                    <i class="checkmark box icon"></i>
+                  </button>
+                </div>
+              </form>
+            </div>
         </div>
         <%= yield %>
     </body>
