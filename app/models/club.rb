@@ -29,6 +29,6 @@ class Club < ActiveRecord::Base
       ) y
     })
 
-    result.to_a.last['members_in_club'] || 0
+    result.to_a.last['members_in_club'].to_i || 0
   end
 end

@@ -4,6 +4,6 @@ module ClubsHelper
 
     clubs.sort_by!(&:player_count).reverse!
 
-    clubs.in_groups_of(num_columns, nil).transpose.map(&:compact)
+    clubs.each_slice(num_columns).to_a.transpose
   end
 end
