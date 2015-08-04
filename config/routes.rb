@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       member do
         get :feed
         get :rankings
+        post :match
       end
     end
   end
