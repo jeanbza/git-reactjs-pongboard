@@ -3,4 +3,6 @@
 //= require react_ujs
 //= require dist/semantic.min
 //= require_directory ../../../vendor/assets/semantic/dist/components/min/.
-//= require leaderboard_react
+
+//= require rankings
+//= require matches

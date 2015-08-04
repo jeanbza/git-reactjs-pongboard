@@ -55,5 +55,5 @@ var endpoint = window.location.origin + window.location.pathname + '/rankings'
 
 React.render(
     <LeaderBoard url={endpoint} />,
-    document.getElementById('leaderboard')
+    document.getElementById('rankings')
 );

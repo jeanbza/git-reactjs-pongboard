@@ -1,7 +1,7 @@
 desc 'Import data from racquet.io'
 task :import_racquet_data => :environment do
   # there's probably a better way to do this..
-  if ENV['RAILS_ENV'] ||= 'production'
+  if ENV['RAILS_ENV'] == 'production'
     puts 'Importing data from Racquet.io'
 
     Club.all.each_with_index do |club, index|

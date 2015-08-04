@@ -9,7 +9,7 @@ var Match = React.createClass({
     }
 });
 
-var PongBoard = React.createClass({
+var Feed = React.createClass({
     getInitialState: function() {
         return {};
     },
@@ -35,12 +35,10 @@ var PongBoard = React.createClass({
     render: function() {
         return (
           <table className="ui very basic table">
-            <thead>
-              <tr>
-                <th>Winner</th>
-                <th>Loser</th>
-              </tr>
-            </thead>
+            <thead><tr>
+              <th>Winner</th>
+              <th>Loser</th>
+            </tr></thead>
             <tbody>
               {this.state.matches ? this.state.matches : <td className='loading'>Loading pong data...</td>}
             </tbody>
@@ -49,9 +47,35 @@ var PongBoard = React.createClass({
     }
 });
 
-var endpoint = window.location.origin + window.location.pathname + "/feed"
+var NewMatchForm = React.createClass({
+    render: function() {
+        return (
+          <form className="ui fluid form" id="add-match">
+            <div className="two fields">
+              <div className="field">
+                <input nameName="winner" placeholder="@winner" type="text"></input>
+              </div>
+              <div className="field">
+                <input nameName="loser" placeholder="@loser" type="text"></input>
+              </div>
+              <button className="ui icon button" type="submit">
+                <i className="checkmark box icon"></i>
+              </button>
+            </div>
+          </form>
+        );
+    }
+});
+
+var matchesGetEndpoint = window.location.origin + window.location.pathname + "/feed"
+var matchesCreateEndpoint = window.location.origin + window.location.pathname + "/matches"
 
 React.render(
-    <PongBoard url={endpoint} />,
+    <Feed url={matchesGetEndpoint} />,
     document.getElementById('feed')
+);
+
+React.render(
+    <NewMatchForm url={matchesCreateEndpoint} />,
+    document.getElementById('newMatchForm')
 );

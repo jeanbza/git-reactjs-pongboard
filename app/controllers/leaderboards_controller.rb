@@ -1,4 +1,7 @@
 class LeaderboardsController < ApplicationController
+  def show
+  end
+
   def rankings
     players = Hash.new do |hash, key|
       hash[key] = Elo::Player.new
