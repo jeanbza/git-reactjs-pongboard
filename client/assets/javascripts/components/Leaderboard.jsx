@@ -1,14 +1,5 @@
-var Player = React.createClass({
-    render: function() {
-        return (
-            <tr className="player">
-                <td><h4 className="ui header"><div className="content">{this.props.name}</div></h4></td>
-                <td>{this.props.rating}</td>
-                <td>{this.props.rank}</td>
-            </tr>
-        );
-    }
-});
+import Player from './Player';
+import React from 'react';
 
 var LeaderBoard = React.createClass({
     getInitialState: function() {
@@ -50,10 +41,3 @@ var LeaderBoard = React.createClass({
         );
     }
 });
-
-var endpoint = window.location.origin + window.location.pathname + '/rankings'
-
-React.render(
-    <LeaderBoard url={endpoint} />,
-    document.getElementById('rankings')
-);

@@ -23,5 +23,7 @@
       <%= render 'layouts/generic_inner_menu' %>
     <% end %>
     <%= yield %>
+
+    <%= javascript_include_tag 'app', 'data-turbolinks-track' => true %>
   </body>
 </html>

@@ -1,36 +1,45 @@
 import $ from 'jquery';
 import React from 'react';
-import CommentBox from './components/CommentBox';
+import LeaderBoard from './components/Leaderboard';
+import Feed from './components/Feed';
+import NewMatchForm from './components/NewMatchForm';
+
+var matchesGetEndpoint = window.location.origin + window.location.pathname + "/feed";
+var matchesCreateEndpoint = window.location.origin + window.location.pathname + "/match";
+var rankingsEndpoint = window.location.origin + window.location.pathname + '/rankings'
 
 $(function onLoad() {
   function render() {
-    if ($('#content').length > 0) {
+    if ($('#rankings').length > 0) {
       React.render(
-        <div>
-          <CommentBox url='comments.json' pollInterval={5000}/>
+        <LeaderBoard url={rankingsEndpoint} />,
+        document.getElementById('rankings')
+      );
+    }
 
-          <div className='container'>
-            <a href='http://www.railsonmaui.com'>
-              <h3 className='open-sans-light'>
-                <div className='logo'/>
-                Example of styling using image-url and Open Sans Light custom font
-              </h3>
-            </a>
-            <a href='https://twitter.com/railsonmaui'>
-              <div className='twitter-image'/>
-              Rails On Maui on Twitter
-            </a>
-          </div>
-        </div>,
-        document.getElementById('content')
+    if ($('#feed').length > 0) {
+      React.render(
+        <Feed url={matchesGetEndpoint} />,
+        document.getElementById('feed')
+      );
+    }
+
+    if ($('#newMatchForm').length > 0) {
+      React.render(
+        <NewMatchForm url={matchesCreateEndpoint} />,
+        document.getElementById('newMatchForm')
       );
     }
   }
 
   render();
 
-  // Next part is to make this work with turbo-links
+  // TODO: this may be unnecessary?
   $(document).on('page:change', () => {
     render();
   });
+});
+
+$("document").ready(function() {
+  $('.ui.dropdown').dropdown();
 });
