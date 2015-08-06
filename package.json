@@ -6,8 +6,7 @@
     "node": "0.12.7"
   },
   "scripts": {
-    "postinstall": "cd ./client && npm install",
-    "gulp": "cd ./client && npm run gulp"
+    "postinstall": "cd ./client && npm install"
   },
   "repository": {
     "type": "git",
