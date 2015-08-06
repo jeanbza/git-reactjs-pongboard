@@ -1,0 +1,29 @@
+{
+  "name": "git-react-pongboard",
+  "version": "1.0.1",
+  "description": "Table Tennis Leaderboard",
+  "main": "server.js",
+  "engines": {
+    "node": "0.12.7"
+  },
+  "scripts": {
+    "postinstall": "cd ./client && npm install",
+    "gulp": "cd ./client && npm run gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jadekler/git-react-pongboard.git"
+  },
+  "keywords": [
+    "react",
+    "ping pong",
+    "table tennis",
+    "pongboard"
+  ],
+  "author": "jadekler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jadekler/git-react-pongboard/issues"
+  },
+  "homepage": "https://github.com/jadekler/git-react-pongboard"
+}

@@ -90,7 +90,6 @@ var NewMatchForm = React.createClass({
   }
 });
 
-// TODO: replace with server-side injection?
 var matchesGetEndpoint = window.location.origin + window.location.pathname + "/feed";
 var matchesCreateEndpoint = window.location.origin + window.location.pathname + "/match";
 

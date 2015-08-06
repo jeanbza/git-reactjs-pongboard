@@ -10,3 +10,12 @@ log*
 *schema.rb
 .rake_tasks~
 **/.DS_Store
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+/public/assets
+client-bundle.js
+client-bundle.js.map
+node_modules
+npm-debug.log
