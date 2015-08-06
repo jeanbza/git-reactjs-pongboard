@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jadekler/git-react-pongboard.git"
+    "url": "https://github.com/jadekler/git-reactjs-pongboard.git"
   },
   "keywords": [
     "react",
@@ -19,9 +19,9 @@
   "author": "jadekler",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jadekler/git-react-pongboard/issues"
+    "url": "https://github.com/jadekler/git-reactjs-pongboard/issues"
   },
-  "homepage": "https://github.com/jadekler/git-react-pongboard",
+  "homepage": "https://github.com/jadekler/git-reactjs-pongboard",
   "dependencies": {
     "alt": "^0.17.1",
     "babel-core": "^5.8.20",
@@ -61,7 +61,6 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
     "gulp": "gulp",
     "jscs": "jscs --verbose",
     "eslint": "eslint"
