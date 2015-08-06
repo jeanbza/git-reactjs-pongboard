@@ -38,3 +38,5 @@ var Feed = React.createClass({
         );
     }
 });
+
+module.exports = Feed;

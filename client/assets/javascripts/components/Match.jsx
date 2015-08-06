@@ -10,3 +10,5 @@ var Match = React.createClass({
         );
     }
 });
+
+module.exports = Match;

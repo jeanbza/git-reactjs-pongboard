@@ -8,7 +8,7 @@ module.exports = {
   entry: ['./assets/javascripts/App'],
   resolve: {
     root: [path.join(__dirname, 'scripts'), path.join(__dirname, 'assets/javascripts')],
-    extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx', '.scss', '.css', 'config.js']
+    extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx', '.css', 'config.js']
   },
   module: {
     loaders: [],

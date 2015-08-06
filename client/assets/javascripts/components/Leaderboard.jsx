@@ -41,3 +41,5 @@ var LeaderBoard = React.createClass({
         );
     }
 });
+
+module.exports = LeaderBoard;

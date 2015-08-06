@@ -1,6 +1,7 @@
 import React from 'react';
 
-var NewMatchForm = React.createClass({
+
+const NewMatchForm = React.createClass({
   getInitialState: function() {
     return {winner: '', loser: ''};
   },
@@ -42,3 +43,5 @@ var NewMatchForm = React.createClass({
     );
   }
 });
+
+module.exports = NewMatchForm;
