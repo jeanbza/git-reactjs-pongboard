@@ -10,6 +10,13 @@ gem 'activerecord'
 gem 'activerecord-postgresql-adapter'
 gem 'rake'
 gem 'rufus-scheduler'
+gem 'sass'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-react'
+  gem 'rails-assets-flux'
+  gem 'rails-assets-semantic'
+end
 
 group :development do
   gem 'puma'
