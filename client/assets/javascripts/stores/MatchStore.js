@@ -50,7 +50,7 @@ AppDispatcher.register(function(action) {
   var text;
 
   switch(action.actionType) {
-    case MatchConstants.MATCH_ADD:
+    case MatchConstants.MATCH_CREATE:
       create(action.winner, action.loser);
       break;
     case TodoConstants.MATCH_DESTROY:
