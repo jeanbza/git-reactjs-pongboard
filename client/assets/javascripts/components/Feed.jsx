@@ -5,21 +5,15 @@ var MatchStore = require('../stores/MatchStore');
 
 var Feed = React.createClass({
     getInitialState: function() {
-        return {}}
+        return {};
     },
     componentDidMount: function() {
       var matchStoreMatches = MatchStore.getAll();
       var matches = [];
 
       for (var key in matchStoreMatches) {
-        matches.push(<Match winner={matchStoreMatches[key].winner}, loser={matchStoreMatches[key].loser} />);
+        matches.push(<Match winner={matchStoreMatches[key].winner} loser={matchStoreMatches[key].loser} />);
       }
-
-      // var matches = MatchStore.getAll().map(function (match) {
-      //     return (
-      //         <Match winner={match.winner} loser={match.loser} />
-      //     );
-      // });
 
       this.setState({matches: matches});
     },

@@ -1,5 +1,6 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var MatchConstants = require('../constants/MatchConstants');
+var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 
 var _matches = {5: {winner: 'bob', loser: 'sue'}, 8: {winner: 'alex', loser: 'ronda'}};
