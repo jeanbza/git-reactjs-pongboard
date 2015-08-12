@@ -3,19 +3,24 @@ import React from 'react';
 
 var MatchStore = require('../stores/MatchStore');
 
+function getMatches() {
+  console.log('getting matches');
+  var matchStoreMatches = MatchStore.getAll();
+  var matches = [];
+
+  for (var key in matchStoreMatches) {
+    matches.push(<Match winner={matchStoreMatches[key].winner} loser={matchStoreMatches[key].loser} />);
+  }
+
+  return {matches: matches};
+}
+
 var Feed = React.createClass({
     getInitialState: function() {
-        return {};
+      return getMatches();
     },
     componentDidMount: function() {
-      var matchStoreMatches = MatchStore.getAll();
-      var matches = [];
-
-      for (var key in matchStoreMatches) {
-        matches.push(<Match winner={matchStoreMatches[key].winner} loser={matchStoreMatches[key].loser} />);
-      }
-
-      this.setState({matches: matches});
+      MatchStore.addChangeListener(this._onChange);
     },
     render: function() {
         return (
@@ -29,6 +34,9 @@ var Feed = React.createClass({
             </tbody>
           </table>
         );
+    },
+    _onChange: function() {
+      this.setState(getMatches());
     }
 });
 

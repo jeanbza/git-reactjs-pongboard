@@ -13,9 +13,9 @@ const NewMatchForm = React.createClass({
     this.setState({winner: this.state.winner, loser: e.target.value});
   },
   handleSubmit: function(event) {
-    MatchActions.create(this.state.winner, this.state.loser);
-
     event.preventDefault();
+
+    MatchActions.create(this.state.winner, this.state.loser);
   },
   render: function() {
     return (

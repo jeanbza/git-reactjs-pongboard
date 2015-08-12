@@ -5,10 +5,12 @@ var assign = require('object-assign');
 
 var _matches = {5: {winner: 'bob', loser: 'sue'}, 8: {winner: 'alex', loser: 'ronda'}};
 
-var matchesCreateEndpoint = window.location.origin + window.location.pathname + "/match";
+var CHANGE_EVENT = 'change';
 
 function create(winner, loser) {
   console.log('Posting match to server');
+
+  var matchesCreateEndpoint = window.location.origin + window.location.pathname + "/match";
 
   $.ajax({
     url: matchesCreateEndpoint,
@@ -18,19 +20,22 @@ function create(winner, loser) {
       withCredentials: true
     },
     dataType: 'json',
-    data: JSON.stringify(this.state),
+    data: JSON.stringify({winner: winner, loser: loser}),
     success: function(data) {
-      // TODO: this id should be in the server response body
-      var id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
-
-      _matches[id] = {
-        winner: winner,
-        loser: loser
-      };
+      console.log('Success!');
 
       console.log('Successful POST');
     }
   });
+
+  // TODO: this should be in the ajax success call
+  // TODO: this id should be in the server response body
+  var id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
+
+  _matches[id] = {
+    winner: winner,
+    loser: loser
+  };
 }
 
 function destroy(id) {
@@ -61,15 +66,23 @@ var MatchStore = assign({}, EventEmitter.prototype, {
 
     return _matches;
   },
+  emitChange: function() {
+    this.emit(CHANGE_EVENT);
+  },
+  addChangeListener: function(callback) {
+    this.on(CHANGE_EVENT, callback);
+  },
 });
 
 AppDispatcher.register(function(action) {
   switch(action.actionType) {
     case MatchConstants.MATCH_CREATE:
       create(action.winner, action.loser);
+      MatchStore.emitChange();
       break;
     case TodoConstants.MATCH_DESTROY:
       destroy(action.id);
+      MatchStore.emitChange();
       break;
     default:
   }
