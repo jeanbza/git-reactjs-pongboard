@@ -1,28 +1,27 @@
 import Match from './Match';
 import React from 'react';
 
+var MatchStore = require('../stores/MatchStore');
+
 var Feed = React.createClass({
     getInitialState: function() {
-        return {};
+        return {}}
     },
     componentDidMount: function() {
-        $.ajax({
-            url: this.props.url,
-            dataType: 'json',
-            cache: false,
-            success: function(data) {
-                var matches = data.map(function (match) {
-                    return (
-                        <Match winner={match.winner} loser={match.loser} />
-                    );
-                });
+      var matchStoreMatches = MatchStore.getAll();
+      var matches = [];
 
-                this.setState({matches: matches});
-            }.bind(this),
-            error: function(xhr, status, err) {
-                console.error(this.props.url, status, err.toString());
-            }.bind(this)
-        });
+      for (var key in matchStoreMatches) {
+        matches.push(<Match winner={matchStoreMatches[key].winner}, loser={matchStoreMatches[key].loser} />);
+      }
+
+      // var matches = MatchStore.getAll().map(function (match) {
+      //     return (
+      //         <Match winner={match.winner} loser={match.loser} />
+      //     );
+      // });
+
+      this.setState({matches: matches});
     },
     render: function() {
         return (

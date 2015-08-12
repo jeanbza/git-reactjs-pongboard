@@ -1,5 +1,6 @@
 import React from 'react';
 
+var MatchActions = require('../actions/MatchActions');
 
 const NewMatchForm = React.createClass({
   getInitialState: function() {
@@ -12,16 +13,7 @@ const NewMatchForm = React.createClass({
     this.setState({winner: this.state.winner, loser: e.target.value});
   },
   handleSubmit: function(event) {
-    $.ajax({
-      url: this.props.url,
-      type: "POST",
-      crossDomain: true,
-      xhrFields: {
-        withCredentials: true
-      },
-      dataType: 'json',
-      data: JSON.stringify(this.state)
-    })
+    MatchActions.create(this.state.winner, this.state.loser);
 
     event.preventDefault();
   },

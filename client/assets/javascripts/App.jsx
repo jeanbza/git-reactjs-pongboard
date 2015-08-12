@@ -5,7 +5,6 @@ import Feed from './components/Feed';
 import NewMatchForm from './components/NewMatchForm';
 
 var matchesGetEndpoint = window.location.origin + window.location.pathname + "/feed";
-var matchesCreateEndpoint = window.location.origin + window.location.pathname + "/match";
 var rankingsEndpoint = window.location.origin + window.location.pathname + '/rankings'
 
 $(function onLoad() {
@@ -19,14 +18,14 @@ $(function onLoad() {
 
     if ($('#feed').length > 0) {
       React.render(
-        <Feed url={matchesGetEndpoint} />,
+        <Feed />,
         document.getElementById('feed')
       );
     }
 
     if ($('#newMatchForm').length > 0) {
       React.render(
-        <NewMatchForm url={matchesCreateEndpoint} />,
+        <NewMatchForm />,
         document.getElementById('newMatchForm')
       );
     }

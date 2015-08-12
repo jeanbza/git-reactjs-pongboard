@@ -1,54 +1,68 @@
-/*
- * Copyright (c) 2014, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- * TodoStore
- */
-
 var AppDispatcher = require('../dispatcher/AppDispatcher');
-var EventEmitter = require('events').EventEmitter;
 var MatchConstants = require('../constants/MatchConstants');
 var assign = require('object-assign');
 
-var _matches = {};
+var _matches = {5: {winner: 'bob', loser: 'sue'}, 8: {winner: 'alex', loser: 'ronda'}};
 
-/**
- * Create a TODO item.
- * @param  {string} text The content of the TODO
- */
+var matchesCreateEndpoint = window.location.origin + window.location.pathname + "/match";
+
 function create(winner, loser) {
-  // Hand waving here -- not showing how this interacts with XHR or persistent
-  // server-side storage.
-  // Using the current timestamp + random number in place of a real id.
-  var id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
-  _matches[id] = {
-    winner: winner,
-    loser: loser
-  };
+  console.log('Posting match to server');
+
+  $.ajax({
+    url: matchesCreateEndpoint,
+    type: "POST",
+    crossDomain: true,
+    xhrFields: {
+      withCredentials: true
+    },
+    dataType: 'json',
+    data: JSON.stringify(this.state),
+    success: function(data) {
+      // TODO: this id should be in the server response body
+      var id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
+
+      _matches[id] = {
+        winner: winner,
+        loser: loser
+      };
+
+      console.log('Successful POST');
+    }
+  });
 }
 
-/**
- * Delete a TODO item.
- * @param  {string} id
- */
 function destroy(id) {
+  // TODO: should send a DELETE to server
+
   delete _matches[id];
 }
 
 var MatchStore = assign({}, EventEmitter.prototype, {
   getAll: function() {
+    // $.ajax({
+    //     url: this.props.url,
+    //     dataType: 'json',
+    //     cache: false,
+    //     success: function(data) {
+    //         var matches = data.map(function (match) {
+    //             return (
+    //                 <Match winner={match.winner} loser={match.loser} />
+    //             );
+    //         });
+    //
+    //         this.setState({matches: matches});
+    //     }.bind(this),
+    //     error: function(xhr, status, err) {
+    //         console.error(this.props.url, status, err.toString());
+    //     }.bind(this)
+    // });
+
     return _matches;
   },
 });
 
-// Register callback to handle all updates
 AppDispatcher.register(function(action) {
-  var text;
-
   switch(action.actionType) {
     case MatchConstants.MATCH_CREATE:
       create(action.winner, action.loser);
