@@ -7,7 +7,7 @@ var LeaderBoard = React.createClass({
     },
     componentDidMount: function() {
         $.ajax({
-            url: this.props.url,
+            url: window.location.origin + window.location.pathname + '/rankings',
             dataType: 'json',
             cache: false,
             success: function(data) {

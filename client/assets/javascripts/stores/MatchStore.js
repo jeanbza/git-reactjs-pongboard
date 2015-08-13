@@ -13,7 +13,6 @@ $.ajax({
   cache: false,
   success: function(data) {
     var matches = data.map(function (match) {
-      // TODO: id should come from server
       return {winner: match.winner, loser: match.loser};
     });
 
@@ -26,8 +25,6 @@ $.ajax({
 });
 
 function create(winner, loser) {
-  console.log('Posting match to server');
-
   var matchesCreateEndpoint = window.location.origin + window.location.pathname + "/match";
 
   $.ajax({
@@ -37,22 +34,17 @@ function create(winner, loser) {
     xhrFields: {
       withCredentials: true
     },
-    dataType: 'json',
     data: JSON.stringify({winner: winner, loser: loser}),
     success: function(data) {
-      console.log('Success!');
-
-      console.log('Successful POST');
+      _matches.unshift({
+        winner: winner,
+        loser: loser
+      });
+      MatchStore.emitChange();
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      console.log(textStatus, errorThrown);
     }
-  });
-
-  // TODO: this should be in the ajax success call
-  // TODO: this id should be in the server response body
-  var id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
-
-  _matches.unshift({
-    winner: winner,
-    loser: loser
   });
 }
 

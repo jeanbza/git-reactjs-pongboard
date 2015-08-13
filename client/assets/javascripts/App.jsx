@@ -4,13 +4,11 @@ import LeaderBoard from './components/LeaderBoard';
 import Feed from './components/Feed';
 import NewMatchForm from './components/NewMatchForm';
 
-var rankingsEndpoint = window.location.origin + window.location.pathname + '/rankings'
-
 $(function onLoad() {
   function render() {
     if ($('#rankings').length > 0) {
       React.render(
-        <LeaderBoard url={rankingsEndpoint} />,
+        <LeaderBoard />,
         document.getElementById('rankings')
       );
     }

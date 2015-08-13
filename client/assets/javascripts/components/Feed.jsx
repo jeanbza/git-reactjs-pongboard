@@ -4,9 +4,8 @@ import React from 'react';
 var MatchStore = require('../stores/MatchStore');
 
 function getMatches() {
-  console.log('getting matches');
-  var matchStoreMatches = MatchStore.getAll();
   var matches = [];
+  var matchStoreMatches = MatchStore.getAll();
 
   for (var key in matchStoreMatches) {
     matches.push(<Match winner={matchStoreMatches[key].winner} loser={matchStoreMatches[key].loser} />);
