@@ -3,9 +3,27 @@ var MatchConstants = require('../constants/MatchConstants');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 
-var _matches = {5: {winner: 'bob', loser: 'sue'}, 8: {winner: 'alex', loser: 'ronda'}};
+var _matches = [];
 
 var CHANGE_EVENT = 'change';
+
+$.ajax({
+  url: window.location.origin + window.location.pathname + "/feed",
+  dataType: 'json',
+  cache: false,
+  success: function(data) {
+    var matches = data.map(function (match) {
+      // TODO: id should come from server
+      return {winner: match.winner, loser: match.loser};
+    });
+
+    _matches = matches;
+    MatchStore.emitChange();
+  }.bind(this),
+  error: function(xhr, status, err) {
+    console.error(status, err.toString());
+  }.bind(this)
+});
 
 function create(winner, loser) {
   console.log('Posting match to server');
@@ -32,38 +50,20 @@ function create(winner, loser) {
   // TODO: this id should be in the server response body
   var id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
 
-  _matches[id] = {
+  _matches.unshift({
     winner: winner,
     loser: loser
-  };
+  });
 }
 
 function destroy(id) {
   // TODO: should send a DELETE to server
-
-  delete _matches[id];
+  // TODO: should delete based on winner/loser, maybe? tbd
+  // delete _matches[id];
 }
 
 var MatchStore = assign({}, EventEmitter.prototype, {
   getAll: function() {
-    // $.ajax({
-    //     url: this.props.url,
-    //     dataType: 'json',
-    //     cache: false,
-    //     success: function(data) {
-    //         var matches = data.map(function (match) {
-    //             return (
-    //                 <Match winner={match.winner} loser={match.loser} />
-    //             );
-    //         });
-    //
-    //         this.setState({matches: matches});
-    //     }.bind(this),
-    //     error: function(xhr, status, err) {
-    //         console.error(this.props.url, status, err.toString());
-    //     }.bind(this)
-    // });
-
     return _matches;
   },
   emitChange: function() {

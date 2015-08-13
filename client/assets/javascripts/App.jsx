@@ -4,7 +4,6 @@ import LeaderBoard from './components/LeaderBoard';
 import Feed from './components/Feed';
 import NewMatchForm from './components/NewMatchForm';
 
-var matchesGetEndpoint = window.location.origin + window.location.pathname + "/feed";
 var rankingsEndpoint = window.location.origin + window.location.pathname + '/rankings'
 
 $(function onLoad() {
