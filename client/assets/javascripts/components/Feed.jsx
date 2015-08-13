@@ -29,7 +29,7 @@ var Feed = React.createClass({
               <th>Loser</th>
             </tr></thead>
             <tbody>
-              {this.state.matches ? this.state.matches : <td className='loading'>Loading pong data...</td>}
+              {this.state.matches.length > 0 ? this.state.matches : <td className='loading'>Loading pong data...</td>}
             </tbody>
           </table>
         );
