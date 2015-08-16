@@ -7,6 +7,7 @@ var _matches = [];
 
 var CHANGE_EVENT = 'change';
 
+// Initial get matches
 $.ajax({
   url: window.location.origin + window.location.pathname + "/feed",
   dataType: 'json',
@@ -51,7 +52,7 @@ function create(winner, loser) {
 function destroy(id) {
   // TODO: should send a DELETE to server
   // TODO: should delete based on winner/loser, maybe? tbd
-  // delete _matches[id];
+  delete _matches[id];
 }
 
 var MatchStore = assign({}, EventEmitter.prototype, {
@@ -72,7 +73,7 @@ AppDispatcher.register(function(action) {
       create(action.winner, action.loser);
       MatchStore.emitChange();
       break;
-    case TodoConstants.MATCH_DESTROY:
+    case MatchConstants.MATCH_DESTROY:
       destroy(action.id);
       MatchStore.emitChange();
       break;

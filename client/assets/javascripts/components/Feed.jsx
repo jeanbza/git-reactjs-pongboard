@@ -8,7 +8,7 @@ function getMatches() {
   var matchStoreMatches = MatchStore.getAll();
 
   for (var key in matchStoreMatches) {
-    matches.push(<Match winner={matchStoreMatches[key].winner} loser={matchStoreMatches[key].loser} />);
+    matches.push(<Match winner={matchStoreMatches[key].winner} loser={matchStoreMatches[key].loser} id={key} />);
   }
 
   return {matches: matches};
@@ -27,6 +27,7 @@ var Feed = React.createClass({
             <thead><tr>
               <th>Winner</th>
               <th>Loser</th>
+              <th></th>
             </tr></thead>
             <tbody>
               {this.state.matches.length > 0 ? this.state.matches : <td className='loading'>Loading pong data...</td>}
