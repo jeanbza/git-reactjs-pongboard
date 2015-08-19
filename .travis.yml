@@ -2,4 +2,4 @@ nguage: ruby
 rvm:
   - 2.0.0
 after_script:
-  - $(npm bin)/webpack --config webpack.rails.config.js 
+  - cd client && npm install && $(npm bin)/webpack --config webpack.rails.config.js 
