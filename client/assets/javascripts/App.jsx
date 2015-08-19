@@ -1,8 +1,8 @@
 import $ from 'jquery';
 import React from 'react';
-import LeaderBoard from './components/LeaderBoard';
-import Feed from './components/Feed';
-import NewMatchForm from './components/NewMatchForm';
+import LeaderBoard from 'components/LeaderBoard';
+import Feed from 'components/Feed';
+import NewMatchForm from 'components/NewMatchForm';
 
 $(function onLoad() {
   function render() {
