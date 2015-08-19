@@ -1,6 +1,8 @@
 # git-reactjs-pongboard
 Ping Pong leaderboard using [Racquet.io](racquet.io) as data source.
 
+[![Build Status](https://travis-ci.org/jadekler/git-reactjs-pongboard.svg)](https://travis-ci.org/jadekler/git-reactjs-pongboard)
+
 ## Installation and running
 
 1. Install postgresql
