@@ -1,6 +1,5 @@
 ---
 applications:
-  - name: pongboard
-    buildpack: https://github.com/cloudfoundry/ruby-buildpack.git
-    services:
-      - postgres_pongboard
+- name: hannapainting
+  buildpack: https://github.com/cloudfoundry/binary-buildpack.git
+  command: ./website

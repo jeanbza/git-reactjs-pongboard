@@ -1,5 +1,0 @@
-nguage: ruby
-rvm:
-  - 2.0.0
-after_script:
-  - cd client && npm install && $(npm bin)/webpack --config webpack.rails.config.js 

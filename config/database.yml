@@ -1,9 +1,0 @@
-default: &default
-  adapter: postgresql
-  pool: 5
-  timeout: 5000
-
-development:
-  <<: *default
-  database: pongboard
-  username: pongboard

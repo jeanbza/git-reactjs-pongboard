@@ -1,0 +1,22 @@
+{{define "base"}}
+
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/dist/app.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hanna Schulz Photography</title>
+</head>
+<body>
+<div class="page {{.PageClass}}">
+    <div id="navbar"></div>
+    <div class="body">
+        <div id="root"></div>
+
+        {{template "body" .}}
+    </div>
+</div>
+<script src="/dist/bundle.js"></script>
+</body>
+</html>
+
+{{end}}
