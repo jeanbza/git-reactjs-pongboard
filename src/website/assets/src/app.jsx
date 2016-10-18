@@ -13,7 +13,6 @@ import thunk from 'redux-thunk'
 
 import some_reducer from './reducers/some_reducer'
 import ReactThing from './components/ReactThing'
-import GridListExample from './components/GridListExample'
 import Navbar from './components/Navbar'
 
 const store = function configureStore(initialState) {

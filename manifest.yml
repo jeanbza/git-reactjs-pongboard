@@ -1,5 +1,5 @@
 ---
 applications:
-- name: hannapainting
+- name: denver-pongboard
   buildpack: https://github.com/cloudfoundry/binary-buildpack.git
   command: ./website

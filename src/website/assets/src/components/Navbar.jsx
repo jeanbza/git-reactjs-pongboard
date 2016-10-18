@@ -6,12 +6,9 @@ export default class Navbar extends React.Component {
   render() {
     return (
       <Toolbar style={{opacity: .7}}>
-        <ToolbarTitle text="Hanna Schulz Painting" className="toolbar-title" onClick={_ => {window.location = '/'}}/>
+        <ToolbarTitle text="Denver Pongboard" className="toolbar-title" onClick={_ => {window.location = '/'}}/>
         <ToolbarGroup>
-          <FlatButton label="Paintings" primary={this.currentPage() == 'paintings'} onClick={_ => {window.location = '/paintings'}}/>
-          <FlatButton label="Cards" primary={this.currentPage() == 'cards'} onClick={_ => {window.location = '/cards'}}/>
-          <FlatButton label="Custom Orders" primary={this.currentPage() == 'custom_works'} onClick={_ => {window.location = '/custom_works'}}/>
-          <FlatButton label="Contact" primary={this.currentPage() == 'contact'} onClick={_ => {window.location = '/contact'}}/>
+          <FlatButton label="About" primary={this.currentPage() == 'about'} onClick={_ => {window.location = '/about'}}/>
         </ToolbarGroup>
       </Toolbar>
     );

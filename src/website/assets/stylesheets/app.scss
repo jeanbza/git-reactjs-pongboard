@@ -1,5 +1,4 @@
 @import '../node_modules/material-ui-sass/material-ui.scss';
-@import './home/home';
 @import './navbar/navbar';
 
 html, body {
@@ -11,33 +10,5 @@ html, body {
 .page {
   height: 100%;
   width: 100%;
-
-  &.home {
-    background-color: $grey-500;
-
-    //noinspection CssUnknownTarget
-    background: url("/images/paintbrush-canvas.jpg") no-repeat center top fixed;
-    background-size: cover;
-  }
-
-  &.paintings {
-    background-color: $grey-500;
-
-    //noinspection CssUnknownTarget
-    background: url("/images/cross-stitch.jpg") no-repeat center top fixed;
-    background-size: cover;
-  }
-
-  &.cards {
-    background-color: $red-500;
-  }
-
-  &.custom-works {
-    background-color: $blue-500;
-  }
-
-  &.contact {
-    background-color: $purple-500;
-  }
 }
 

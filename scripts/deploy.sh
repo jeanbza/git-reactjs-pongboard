@@ -16,7 +16,6 @@ mkdir -p deploy
 pushd deploy;
     cp ../manifest.yml manifest.yml
     cp -R ../src/website/dist dist/
-    cp -R ../src/website/images images/
     cp -R ../src/website/templates templates/
     cp ../src/website/website website
 

@@ -20,14 +20,7 @@ func main() {
     s := http.StripPrefix("/dist/", http.FileServer(http.Dir("./dist/")))
     r.PathPrefix("/dist/").Handler(s)
 
-    s = http.StripPrefix("/images/", http.FileServer(http.Dir("./images/")))
-    r.PathPrefix("/images/").Handler(s)
-
     r.Handle("/", &handlers.HomeHandler{})
-    r.Handle("/paintings", &handlers.PaintingsHandler{})
-    r.Handle("/cards", &handlers.CardsHandler{})
-    r.Handle("/custom_works", &handlers.CustomWorksHandler{})
-    r.Handle("/contact", &handlers.ContactHandler{})
     http.Handle("/", r)
 
     fmt.Printf("Running on port %s\n", port)
